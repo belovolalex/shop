@@ -1,0 +1,41 @@
+//media
+
+size500()
+ @media (min-width 500px)
+    {block}
+xs()
+ @media (min-width 400px)
+    {block}
+sm()
+ @media (min-width 768px)
+   {block}
+md()
+ @media (min-width 992px)
+   {block}
+lg()
+ @media (min-width 1220px)
+   {block}
+
+
+$green = #85A71E
+$dark-green = #77961A
+
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+  font-family sans-serif
+html
+  font-size 14px
+  +sm()
+    font-size 16px
+
+.container
+  width 100%
+  margin 0 auto
+  padding 0 10px
+  +sm()
+    width 740px
+    padding 0 15px
+  +md()
+    width 940px
