@@ -1,5 +1,7 @@
 <template lang="pug">
-    p footer
+    div
+        p footer
+
 </template>
 
 <script>
