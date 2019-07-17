@@ -1,5 +1,5 @@
-<template>
-    <p>lkjhwer kwerj</p>
+<template lang="pug">
+  p register
 </template>
 
 <script>

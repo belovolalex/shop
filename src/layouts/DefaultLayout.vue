@@ -1,11 +1,10 @@
 <template lang="pug">
   div
     header-layout
-    section.layout-mainblock
+    section.layout-wrap
       sidebar-layout
       section.layout-content
     footer-layout
-      
 
 </template>
 
@@ -23,7 +22,8 @@ export default {
 </script>
 
 <style lang="stylus">
-  .layout-content
-    display flex
-
+.layout-content
+  display flex
+.layout-wrap
+  min-height calc(100vh - 142px)
 </style>

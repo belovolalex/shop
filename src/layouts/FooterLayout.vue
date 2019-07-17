@@ -1,15 +1,16 @@
 <template lang="pug">
-    div
-        p footer
+  footer.footer
+    p footer
 
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="stylus">
-
+.footer {
+  height: 100px;
+  background: $green;
+}
 </style>

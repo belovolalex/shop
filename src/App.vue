@@ -6,17 +6,19 @@
 
 <script>
 
-import DefaultLayuout from './layouts/DefaultLayout'
+import DefaultLayout from './layouts/DefaultLayout'
+import AuthLayout from './layouts/AuthLayout'
 import SvgSprite from './components/SvgSprite'
 export default {
   name: 'app',
   components: {
-    DefaultLayuout,
+    DefaultLayout,
+    AuthLayout,
     SvgSprite
   },
   computed: {
     layout() {
-      return this.$router.meta && this.$router.meta.layout ? this.$router.meta.layout : 'DefaultLayuout'
+      return this.$route.meta.layout || 'DefaultLayout'
     }
   },
   mounted() {
@@ -26,5 +28,4 @@ export default {
 </script>
 
 <style lang="stylus">
-
 </style>

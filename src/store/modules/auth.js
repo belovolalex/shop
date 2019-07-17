@@ -4,17 +4,17 @@ import { API_URL, handlerError } from '../../utils'
 export default {
   namespaced: true,
   state: {
-    navigation: []
+    responseLogin: ''
   },
   mutations: {
-    SET_NAVIGATION(state, payload) {
-      state.navigation = payload
+    HANDLE_LOGIN(state, payload) {
+      state.responseLogin = payload
     }
   },
   actions: {
-    fetchNavigation({commit}) {
-      axios.get(`${API_URL}/navigation`)
-        .then(payload => commit('SET_NAVIGATION', payload.data))
+    login({commit}) {
+      axios.get(`${API_URL}/auth/login`)
+        .then(payload => commit('HANDLE_LOGIN', payload.data))
         .catch(error => handlerError(error))
     }
   }
