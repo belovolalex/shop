@@ -1,8 +1,9 @@
 <template lang="pug">
-  div
+  v-app
     header-layout
-    section.layout-wrap
-      component(:is="currentComp")
+    v-content
+      v-container(fluid fill-height)
+        component(:is="currentComp")
     footer-layout
 </template>
 
@@ -26,6 +27,6 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 </style>

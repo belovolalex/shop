@@ -1,9 +1,10 @@
 <template lang="pug">
-  div
+  v-app
     header-layout
-    section.layout-wrap
-      sidebar-layout
-      section.layout-content
+    v-content
+      v-container(fluid fill-height)
+        sidebar-layout
+          .content
     footer-layout
 
 </template>
@@ -21,9 +22,5 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-.layout-content
-  display flex
-.layout-wrap
-  min-height calc(100vh - 142px)
+<style lang="stylus" scoped>
 </style>

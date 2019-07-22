@@ -23,7 +23,7 @@ const router = new Router({
         meta: {layout: 'AuthLayout'}
       },
       {
-        path: '/register',
+        path: '/registration',
         name: 'authRegister',
         component: AuthRegister,
         meta: {layout: 'AuthLayout'}

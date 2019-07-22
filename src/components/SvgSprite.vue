@@ -1,5 +1,4 @@
 <template lang="pug">
-  p icons
 </template>
 
 <script>

@@ -1,16 +1,20 @@
 <template lang="pug">
   section.auth-login
-    v-container
-      v-layout
-        v-flex(xs12, sm12)
-          v-text-field(v-model='email', :error-messages='emailErrors', label='E-mail', required='', @input='$v.email.$touch()', @blur='$v.email.$touch()')
-      v-layout
-        v-flex(xs12, sm12)
-          v-text-field(v-model='password', :append-icon="show1 ? 'visibility' : 'visibility_off'", :rules='[rules.required, rules.min]', :type="show1 ? 'text' : 'password'", name='input-10-1', label='Normal with hint text', hint='At least 8 characters', counter='', @click:append='show1 = !show1')
-      v-layout
-        v-btn(type="sybmit" color="darken-3") Submit
-
-
+    v-layout(justify-center align-center)
+      v-container
+        v-card(max-width="500" class="mx-auto")
+          v-layout(column)
+            v-flex(sm10)
+              v-form(@submit.prevent="submit" ref="form" class="form")
+                v-layout
+                  v-flex(sm10 mx-auto)
+                    v-text-field(color="green" v-model='email' label='E-mail' required)
+                v-layout
+                  v-flex(sm10 mx-auto)
+                    v-text-field(color="green" v-model='password', label='Пароль', required, :append-icon="showPass ? 'visibility' : 'visibility_off'", :type="showPass ? 'text' : 'password'", name='input-10-1', @click:append='showPass = !showPass')
+                v-layout
+                  v-flex(sm10 mx-auto)
+                    v-btn(type="sybmit" color="green white--text" large class="ml-0") Submit
 </template>
 
 <script>
@@ -28,34 +32,26 @@ export default {
     return {
       email: '',
       password: '',
-      show1: false,
-      rules: {
-        required: value => !!value || 'Required.',
-        min: v => v.length >= 8 || 'Min 8 characters',
-        emailMatch: () => ('The email and password you entered don\'t match')
-      }
-    }
-  },
-  mounted() {
-    console.log('this', this)
-  },
-  computed: {
-    emailErrors () {
-      const errors = []
-      if (!this.$v.email.$dirty) return errors
-      !this.$v.email.email && errors.push('Введите корректный email')
-      !this.$v.email.required && errors.push('поле email обязательно для заполнения')
-      return errors
+      showPass: false
     }
   },
   methods: {
-    login() {
-      this.store.dispatch('auth/login')
+    submit() {
+      let formData = {
+        email: this.email,
+        password: this.password
+      }
+      if(this.$refs.form.validate()) {
+        console.log('this.formData', formData)
+      }
     }
   }
 };
 </script>
 
 <style lang="stylus">
-
+.form
+  padding 20px
+.auth-login
+  width 100%
 </style>

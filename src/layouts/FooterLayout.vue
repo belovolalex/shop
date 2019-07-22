@@ -1,5 +1,5 @@
 <template lang="pug">
-  footer.footer
+  v-footer.footer(color="green" height="auto")
     p footer
 
 </template>
@@ -9,8 +9,5 @@ export default {};
 </script>
 
 <style lang="stylus">
-.footer {
-  height: 100px;
-  background: $green;
-}
+
 </style>

@@ -1,5 +1,8 @@
 <template lang="pug">
-    p main  page
+    div
+        p main  page
+        p asldkas dlaks djlkas d lkasd
+
 </template>
 
 <script>

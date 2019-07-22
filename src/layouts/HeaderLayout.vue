@@ -1,43 +1,40 @@
 <template lang="pug">
-    header.header
-      .header-navifgation-wrap
-        .container
-          .header-navigation
-            nav.header-nav
-              ul.header-list
-                li(v-for="item in navigation")
-                  router-link(:to="item.url" class="nav-link") {{ item.title }}
-            nav.header-nav
-              router-link(to="/login" class="nav-link") Вход
-              router-link(to="/register" class="nav-link") Регистрация
+  header(v-resize="onResize")
+    .header-nav
+      v-navigation-drawer(v-model="sideNav" temporary absolute)
+        v-list
+          v-list-tile(active-class="green white--text" v-for="item in navigation" :key="item.title" :to="item.url")
+            v-list-tile-content {{ item.title }}
+
+      v-toolbar(dark color="green" dense)
+        v-toolbar-side-icon(@click="sideNav = !sideNav" class="hidden-md-and-up")
+        v-toolbar-items(class="hidden-sm-and-down")
+          v-btn(v-for="item in navigation" flat :key="item.title" :to="item.url") {{ item.title }}
+        v-spacer
+        v-toolbar-items(class="hidden-sm-and-down")
+          v-btn(to="/login" flat) Вход
+          v-btn(to="/registration" flat) Регистрация
 </template>
 
 <script>
 import { mapState } from "vuex";
 
 export default {
+  data() {
+    return {
+      sideNav: false
+    }
+  },
   computed: {
     ...mapState('main', [ 'navigation'])
+  },
+  methods: {
+    onResize() {
+      window.innerWidth >= 960 ? this.sideNav = false : ''
+    }
   }
 };
 </script>
 
 <style lang="stylus">
-.header-navifgation-wrap
-  background $green
-.header-navigation
-  display flex
-  justify-content space-between
-.nav-link
-  display inline-block
-  text-decoration none
-  transition .2s
-  padding 12px
-  color white
-  &:hover
-    transition .2s
-    opacity 0.8
-.header-list
-  list-style-type none
-  display flex
 </style>
